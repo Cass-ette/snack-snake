@@ -1,0 +1,46 @@
+{
+  "interfere": {
+    "label": "不要妨碍我",
+    "start": 0,
+    "end": 3.28,
+    "source": "https://www.bilibili.com/video/BV18YbV6FECh/",
+    "type": "original"
+  },
+  "protect": {
+    "label": "我不是为了抵抗，我是为了保护大家",
+    "start": 3.24,
+    "end": 6.62,
+    "source": "https://www.bilibili.com/video/BV18YbV6FECh/",
+    "type": "original",
+    "note": "尾部仅保留“大家”的短余音，已移除下一句“我的毒”起音"
+  },
+  "poison": {
+    "label": "我的毒没有解药",
+    "start": 6.5,
+    "end": 9.82,
+    "source": "https://www.bilibili.com/video/BV18YbV6FECh/",
+    "type": "original",
+    "note": "延长台词尾部并提亮人声；消除突然截断"
+  },
+  "kenchana": {
+    "label": "肯恰那",
+    "start": 9.4,
+    "end": 10.7,
+    "source": "https://www.bilibili.com/video/BV18YbV6FECh/",
+    "type": "original"
+  },
+  "cut": {
+    "label": "我砍",
+    "start": 10.72,
+    "end": 12.36,
+    "source": "https://www.bilibili.com/video/BV18YbV6FECh/",
+    "type": "original"
+  },
+  "cutAgain": {
+    "label": "我再砍",
+    "start": 12.75,
+    "end": 14.55,
+    "source": "https://www.bilibili.com/video/BV18YbV6FECh/",
+    "type": "original"
+  }
+}

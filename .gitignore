@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+__pycache__/
+*.log
+.env*
+# 介绍片成片、工程和素材留在本地，避免加入游戏开源仓库。
+/video/
+/videos/
+/promo/
+/out/
+/outputs/
+/analysis/
+*.mp4
+*.mov
+*.wav
+*.zip
