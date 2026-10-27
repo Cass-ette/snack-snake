@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f7f5ed">
+<meta name="theme-color" content="#161617">
 <meta name="description" content="Viper × 炫神梗改编贪吃蛇：蓝色M豆、72%与80%黑巧、汉堡、毒雾护盾和抵抗军两连砍。">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="shortcut icon" href="./favicon.svg">
@@ -27,9 +27,58 @@
 .audio-controls{display:flex;align-items:center;gap:12px;margin:12px 3px 0;font-size:9px;color:#8a9382;min-height:25px}.voice-toggle{display:flex;align-items:center;gap:6px;white-space:nowrap;border:1px solid #d5ddca;background:transparent;padding:6px 10px;border-radius:6px;font-size:9px}.voice-toggle i{width:5px;height:5px;border-radius:50%;background:#b2b7a9}.voice-toggle[aria-pressed=true]{background:#e6eddf;color:#60794f}.voice-toggle[aria-pressed=true] i{background:#88a86c}.voice-toggle.speaking{border-color:#98b7ce;background:#e1edf2}.audio-controls label{display:flex;align-items:center;gap:7px}.audio-controls input{width:85px;accent-color:#8caa7d;cursor:pointer}.audio-controls output{width:26px;font:9px Arial,sans-serif}.voice-caption{margin-left:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px;letter-spacing:.5px}.voice-samples{border:0;border-top:1px solid var(--line);padding:17px 0 0;margin:18px 0}.voice-samples legend{font-size:11px;color:#687b5b;padding-right:9px}.voice-samples>div{display:grid;grid-template-columns:1fr 1fr;gap:7px}.voice-samples button{font-size:10px;text-align:left;background:#e9ede1;border:1px solid #d5ddca;border-radius:6px;padding:9px 8px;line-height:1.5}.voice-samples p{margin:10px 0;font-size:9px;line-height:1.8}.voice-samples a{color:#638ca3}.voice-samples button:before{content:'▷';margin-right:5px;color:#7b9370}input:focus-visible{outline:2px solid #528db2;outline-offset:3px}
 @media(min-width:781px){.play-panel{max-width:calc((100svh - 351px)*1.2)}}
 @media(max-width:780px){.audio-controls{gap:8px;margin-top:12px}.audio-controls input{width:74px}.voice-caption{font-size:7px}.voice-toggle{font-size:8px;padding:6px 8px}}
+
+@font-face{font-family:DepartureMono;src:url('./assets/fonts/DepartureMono-Regular.woff2') format('woff2');font-display:swap}
+:root{--paper:#161617;--ink:#e2e2e3;--muted:#96969a;--pink:#f1aec4;--blue:#9ec8e4;--green:#dbe8cf;--line:#ffffff20;--accent:#e7a6bd;--accent-2:#96bfd8;--board-bg:#191a1c;--board-alt:#1d1e20;--board-line:#ffffff09;--font-mono:'DepartureMono',monospace}
+body{isolation:isolate;background:var(--paper);color:var(--ink)}
+.ambient-lights{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse 54% 45% at 50% -12%,#ffffff0b,transparent 78%)}
+.ambient-lights:before,.ambient-lights:after{content:"";position:absolute;inset:-24%;pointer-events:none;filter:blur(30px)}
+.ambient-lights:before{background:radial-gradient(ellipse 110px 620px at 31% 0%,#d8d8dc12,transparent 78%),radial-gradient(ellipse 130px 700px at 64% 5%,#d5d5da10,transparent 80%);animation:light-drift 24s ease-in-out infinite alternate}
+.ambient-lights:after{background:radial-gradient(ellipse 600px 260px at 50% 0%,#ffffff09,transparent 78%);animation:light-breathe 12s ease-in-out infinite alternate}
+.glyph-field{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.74}
+.page-grain{position:fixed;inset:0;z-index:2;opacity:.15;pointer-events:none;background:url('./assets/images/grain-tile.png') repeat;background-size:128px 128px}
+.shell{position:relative;z-index:3;max-width:1152px}
+.topbar,.footer{border-color:var(--line)}
+.brand-name{font-family:var(--font-mono);color:#e4e4e5;font-size:13px;letter-spacing:0}.brand-name span{font-size:8px;letter-spacing:1.2px;color:#929297}
+.brand-mark{opacity:.78}.brand-mark use{filter:grayscale(.8)}
+.top-right,.text-btn{color:#c2c2c5}.open-tag{color:#a5b5a3}.open-tag i,.status-dot{background:#8a9b89}.edition{color:#8d8d92;border-color:#ffffff20}
+.text-btn:hover,.meme-notes summary:hover{color:var(--accent)}
+h1{color:#e5e5e6}h1 .highlight:before{background:var(--accent);opacity:.23;transform:rotate(-1deg)}
+.eyebrow,.mode-label,.palette-heading,.edition,.score-label,.tiny-title,.board-top-note,.window-build,.footer .english{font-family:var(--font-mono);letter-spacing:.7px}
+.eyebrow,.mode-label{color:#aaaab0}.eyebrow:before{background:#8e8e93}.intro-copy,.mode-note{color:#a0a0a5}
+.mood{color:#aaaab1}.mascot>svg{filter:saturate(.88)}.mascot .mascot-outline{stroke:var(--mascot-outline)}.mascot .mascot-body{stroke:var(--mascot-body)}.mascot .mascot-accent{stroke:var(--mascot-accent)}.mascot .mascot-head{fill:var(--mascot-head);stroke:var(--mascot-outline)}
+.modes{background:#ffffff08;border:1px solid #ffffff12;border-radius:8px;padding:3px}.mode{border-radius:6px;color:#a4a4a8}.mode[aria-pressed=true]{color:#ededee;background:#ffffff0c;box-shadow:inset 0 0 0 1px #ffffff17}.mode svg{opacity:.72}
+.palette-box{margin-top:19px;padding-top:13px;border-top:1px solid #ffffff18}.palette-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:8px;color:#98989d}.palette-current{color:var(--accent);font-family:var(--font)}
+.palette-options{display:flex;gap:5px;margin-top:9px}.palette-option{display:flex;align-items:center;justify-content:center;gap:6px;min-width:0;flex:1;padding:7px 4px;background:transparent;border:1px solid transparent;border-radius:5px;color:#a4a4a8;font-size:9px;letter-spacing:.2px}.palette-option:hover{background:#ffffff08}.palette-option[aria-pressed=true]{border-color:color-mix(in srgb,var(--accent) 38%,transparent);background:color-mix(in srgb,var(--accent) 8%,transparent);color:#eeeeef}.swatch{width:17px;height:8px;border-radius:2px;background:linear-gradient(90deg,#f1aec4 0 50%,#9ec8e4 50%);border:1px solid #ffffff20;flex-shrink:0}.swatch.griffin{background:linear-gradient(90deg,#d45c61 0 50%,#e9e3dd 50%)}.swatch.edg{background:linear-gradient(90deg,#40444b 0 50%,#e0e1e2 50%)}.swatch.hle{background:linear-gradient(90deg,#e19142 0 50%,#aeb3b4 50%)}.palette-note{font-size:9px;line-height:1.6;color:#8e8e93;margin:7px 0 0;min-height:14px}
+.snack-menu{border-color:#ffffff19}.menu-item{color:#b1b1b5}.menu-item strong{color:#d2d2d4}.cocoa-icon{filter:saturate(.85)}
+.score-number{font-family:var(--font-mono);color:#e5e5e6}.best-score{color:#aaaab0}.score-label{color:#9b9ba0}.record-icon{stroke:#a5a5aa}
+.icon-btn{border-color:#ffffff26;color:#cdcdcf;background:#ffffff04}.icon-btn:hover{background:#ffffff0c}.round-actions svg{opacity:.85}.pixel-icon{fill:currentColor;stroke:none;shape-rendering:crispEdges;flex-shrink:0}
+.meme-hud{margin-bottom:13px}.fuel-label{color:#b0b0b4}.fuel-label strong{font-family:var(--font-mono);color:var(--accent)}.fuel-track{height:5px;background:#ffffff18;border-radius:2px}.fuel-track span{background:var(--accent-2);border-radius:1px}.fuel-track.charged span{background:linear-gradient(90deg,var(--accent-2),var(--accent))}.fuel-track i{background:#d0d0d4}.power-btn{border:1px solid #ffffff25;border-radius:4px;background:#ffffff08;color:#c8c8ca}.power-btn:not(:disabled){background:color-mix(in srgb,var(--accent) 16%,#191a1c);border-color:color-mix(in srgb,var(--accent) 42%,transparent);color:#f1e9ec}.rival-status{color:#a0a0a5}.rival-status.danger{color:#e0a27f}.dialogue-row{color:#c1c1c4}.speaker{background:color-mix(in srgb,var(--accent-2) 15%,#191a1c);color:#c9dce6;border-radius:3px}.speaker.enemy{background:#d39a6d18;color:#e1bb9d}
+.board-frame{padding:0;background:#191a1c;border:1px solid #ffffff20;border-radius:12px;box-shadow:0 16px 42px -34px #000b;overflow:hidden}
+.board-window-bar{height:35px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 13px;border-bottom:1px solid #ffffff18;background:#1b1c1e;color:#aaaaaf;font:8px var(--font-mono);letter-spacing:.7px}
+.window-lights{display:flex;gap:5px}.window-lights i{display:block;width:7px;height:7px;border-radius:50%;background:#727276}.window-lights i:first-child{background:#a67473}.window-lights i:nth-child(2){background:#a58a65}.window-lights i:nth-child(3){background:#718c74}.board-window-bar>b,.board-window-bar b{color:#646469;font-weight:400}.window-build{font-size:7px;color:#77777c}
+.board{border:0;border-radius:0;background:var(--board-bg)}.board:after{inset:0;border-radius:0;box-shadow:inset 0 0 70px #0002}
+.overlay{background:#11121477}.start-card{background:#242528c9;border:1px solid #ffffff20;border-radius:12px;padding:24px 30px 21px;box-shadow:0 12px 34px #0003;backdrop-filter:blur(28px) saturate(112%);-webkit-backdrop-filter:blur(28px) saturate(112%);transform:none}.tiny-title{color:#a8a8ad}.overlay h2{color:#ededee;font-size:24px}.overlay-copy{color:#b3b3b7}.card-glasses{filter:grayscale(.15)}
+.primary-btn{border-color:color-mix(in srgb,var(--accent) 45%,#ffffff20);background:color-mix(in srgb,var(--accent) 16%,#242528);color:#f2e9ed;border-radius:6px;box-shadow:none}.primary-btn:hover{background:color-mix(in srgb,var(--accent) 23%,#242528);box-shadow:none;transform:translateY(-2px)}.start-hint{color:#9c9ca1}.start-hint kbd{border-color:#ffffff27}.board-top-note{color:#85858a}.corner-flower{color:color-mix(in srgb,var(--accent) 47%,#77777d)}.board-status{color:#a3a3a8}.board-status .status-dot{background:var(--accent)}
+.under-board{padding-top:18px}.control-hint,.under-note{color:#a4a4a8}.under-note em{color:var(--accent)}.keys kbd{font-family:var(--font-mono);color:#c5c5c8;background:#222326;border:1px solid #ffffff20;border-bottom-color:#ffffff31}.level-pill{font-family:var(--font-mono);border-radius:3px;background:#ffffff0a;color:#b4b4b8;border:1px solid #ffffff13}
+.audio-controls{color:#a7a7ac}.voice-toggle{border-color:#ffffff24;color:#c5c5c9;border-radius:4px}.voice-toggle[aria-pressed=true]{background:#ffffff0b;color:#e0e0e2}.voice-toggle i{background:#77777d}.voice-toggle[aria-pressed=true] i{background:var(--accent)}.voice-toggle.speaking{border-color:color-mix(in srgb,var(--accent-2) 55%,transparent);background:#ffffff0b}.audio-controls input{accent-color:var(--accent)}
+.footer{color:#96969b}.footer b{color:var(--accent)}
+.toast{background:#242528ed;border:1px solid #ffffff20;backdrop-filter:blur(18px);border-radius:6px}
+dialog{border:1px solid #ffffff21;background:#202124e8;color:#e2e2e4;border-radius:12px;box-shadow:0 18px 54px #0005;backdrop-filter:blur(30px) saturate(112%);-webkit-backdrop-filter:blur(30px) saturate(112%)}dialog::backdrop{background:#09090aa8;backdrop-filter:blur(6px)}dialog p,.rules span{color:#b0b0b5}.rules li,.voice-samples,.meme-notes{border-color:#ffffff1b}.meme-notes summary,.voice-samples legend{color:var(--accent)}.meme-notes a,.voice-samples a{color:var(--accent-2)}.voice-samples button{background:#ffffff08;border:1px solid #ffffff1b;color:#d0d0d2;border-radius:4px}.voice-samples button:before{color:var(--accent)}.dialog-top .icon-btn{border-radius:5px}
+.dpad button{background:#222326;border:1px solid #ffffff20;border-bottom:2px solid #ffffff30;border-radius:6px;color:#d1d1d4}.mobile-power{background:#ffffff0b!important;color:#ddd!important}.board-frame.powered{border-color:color-mix(in srgb,var(--accent) 55%,transparent);box-shadow:0 0 24px color-mix(in srgb,var(--accent) 15%,transparent)}.board-frame.under-attack{border-color:#d09a75}
+button:not(:disabled):hover{transition-duration:.18s}button:not(:disabled):active{transform:translateY(1px)}
+@keyframes light-drift{0%{transform:translate3d(-2%,0,0) rotate(-.5deg);opacity:.7}100%{transform:translate3d(3%,1%,0) rotate(.6deg);opacity:1}}
+@keyframes light-breathe{0%{transform:translate3d(-2%,-1%,0) scale(.97);opacity:.6}100%{transform:translate3d(2%,1%,0) scale(1.04);opacity:1}}
+@media(min-width:781px){.intro{padding-top:5px}.palette-box{max-width:340px}.palette-option{padding:8px 4px}.layout{grid-template-columns:minmax(280px,310px) minmax(0,1fr);gap:50px}h1{font-size:48px}.mascot{height:190px}}
+@media(max-width:780px){.glyph-field{opacity:.56}.ambient-lights:before{opacity:.65}.topbar{height:72px}.layout{padding-top:22px}.palette-box{margin-top:12px;padding-top:10px}.palette-options{max-width:360px}.palette-option{font-size:8px;padding:6px 2px}.palette-note{font-size:8px}.board-window-bar{height:29px;padding:0 10px;font-size:7px}.window-build{font-size:6px}.board-frame{border-radius:9px}.start-card{border-radius:9px;padding:16px 22px}.overlay h2{font-size:20px}.footer{border-color:#ffffff1c}}
+@media(max-width:390px){.palette-heading{font-size:7px}.palette-options{gap:2px}.palette-option{gap:4px}.swatch{width:13px;height:7px}.board-window-bar{height:27px}}
+@media(prefers-reduced-motion:reduce){.ambient-lights:before,.ambient-lights:after{animation:none!important}}
 </style>
 </head>
 <body>
+<div class="ambient-lights" aria-hidden="true"></div>
+<canvas class="glyph-field" id="glyphField" aria-hidden="true"></canvas>
+<div class="page-grain" aria-hidden="true"></div>
 <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
  <symbol id="glasses" viewBox="0 0 80 40"><g fill="#ffffff55" stroke="#303d3a" stroke-width="3.5"><circle cx="22" cy="21" r="14"/><circle cx="59" cy="21" r="14"/><path d="M36 19Q40 15 45 19M8 17L2 14M73 17L79 14" fill="none"/></g><path d="M14 14L18 10M51 14L55 10" stroke="white" stroke-width="2.5" stroke-linecap="round"/></symbol>
  <symbol id="candy" viewBox="0 0 44 44"><ellipse cx="22" cy="26" rx="17" ry="13" fill="#303d3a12"/><ellipse cx="22" cy="21" rx="16" ry="15" fill="#83b9de" stroke="#5c8faf" stroke-width="1.3"/><path d="M12 15Q16 8 24 10" fill="none" stroke="#fff8" stroke-width="3" stroke-linecap="round"/><text x="22" y="27" font-family="Georgia,serif" font-weight="bold" font-size="23" text-anchor="middle" fill="#fffdf4">m</text></symbol>
@@ -48,14 +97,14 @@
    <div class="mascot" aria-hidden="true">
     <span class="mood">don't get in my way.</span>
     <svg viewBox="0 0 370 220" role="img" aria-label="戴圆框眼镜的粉蓝相间小蛇">
-     <ellipse cx="170" cy="194" rx="107" ry="10" fill="#e5e8db"/>
+     <ellipse cx="170" cy="194" rx="107" ry="10" fill="#00000040"/>
      <g class="float-up">
-      <path d="M65 166C67 187 102 188 105 165L105 123C105 96 145 94 145 123V164C145 195 187 192 187 163V103C187 74 225 72 225 100V142" fill="none" stroke="#58796e" stroke-width="44" stroke-linecap="round"/>
-      <path d="M65 166C67 187 102 188 105 165L105 123C105 96 145 94 145 123V164C145 195 187 192 187 163V103C187 74 225 72 225 100V142" fill="none" stroke="#a4cce3" stroke-width="40" stroke-linecap="round"/>
-      <path d="M105 143V123C105 96 145 94 145 123V139M179 180Q188 174 187 157V135M202 81Q226 77 225 106V118" fill="none" stroke="#efb2c6" stroke-width="40"/>
+       <path class="mascot-outline" d="M65 166C67 187 102 188 105 165L105 123C105 96 145 94 145 123V164C145 195 187 192 187 163V103C187 74 225 72 225 100V142" fill="none" stroke="#58796e" stroke-width="44" stroke-linecap="round"/>
+       <path class="mascot-body" d="M65 166C67 187 102 188 105 165L105 123C105 96 145 94 145 123V164C145 195 187 192 187 163V103C187 74 225 72 225 100V142" fill="none" stroke="#a4cce3" stroke-width="40" stroke-linecap="round"/>
+       <path class="mascot-accent" d="M105 143V123C105 96 145 94 145 123V139M179 180Q188 174 187 157V135M202 81Q226 77 225 106V118" fill="none" stroke="#efb2c6" stroke-width="40"/>
       <path d="M65 163Q67 169 74 170M114 115Q124 104 135 115M154 176Q164 183 173 174M196 105V99Q201 88 210 91" fill="none" stroke="#fff6" stroke-width="5" stroke-linecap="round"/>
       <g transform="translate(190 119) rotate(-7 37 28)">
-       <path d="M7 12Q5-7 24-8H49Q67-8 69 13L70 42Q67 63 39 61Q8 62 4 41Z" fill="#a4cce3" stroke="#58796e" stroke-width="2"/>
+        <path class="mascot-head" d="M7 12Q5-7 24-8H49Q67-8 69 13L70 42Q67 63 39 61Q8 62 4 41Z" fill="#a4cce3" stroke="#58796e" stroke-width="2"/>
        <path d="M10 10Q13-1 27-1" fill="none" stroke="#fff7" stroke-width="5" stroke-linecap="round"/>
        <ellipse cx="18" cy="38" rx="7" ry="4" fill="#e9a8bf99"/><ellipse cx="58" cy="38" rx="7" ry="4" fill="#e9a8bf99"/>
        <circle cx="24" cy="26" r="3" fill="#303d3a"/><circle cx="52" cy="26" r="3" fill="#303d3a"/>
@@ -71,6 +120,16 @@
     <button class="mode" data-mode="classic" aria-pressed="true"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M7 10h6m-2-2 2 2-2 2"/></svg>经典挑战</button>
     <button class="mode" data-mode="wrap" aria-pressed="false"><svg viewBox="0 0 20 20"><path d="M3 7h10a4 4 0 0 1 0 8H7M6 4 3 7l3 3m4 2-3 3 3 3"/></svg>快乐穿墙</button>
    </div><p class="mode-note" id="modeNote">经典贪吃蛇规则，加上炫神两连砍。</p></div>
+   <div class="palette-box">
+    <div class="palette-heading"><span>VIPER CAREER / 小蛇战袍</span><span class="palette-current" id="paletteCurrent">BLG · 粉蓝</span></div>
+    <div class="palette-options" role="group" aria-label="选择小蛇配色">
+     <button class="palette-option" data-palette="blg" aria-pressed="true"><i class="swatch blg"></i><span>BLG</span></button>
+     <button class="palette-option" data-palette="griffin" aria-pressed="false"><i class="swatch griffin"></i><span>GRF</span></button>
+     <button class="palette-option" data-palette="edg" aria-pressed="false"><i class="swatch edg"></i><span>EDG</span></button>
+     <button class="palette-option" data-palette="hle" aria-pressed="false"><i class="swatch hle"></i><span>HLE</span></button>
+    </div>
+    <p class="palette-note" id="paletteNote">BLG 粉蓝，小蛇现在这件。</p>
+   </div>
    <div class="snack-menu meme-menu">
     <div class="menu-item"><svg aria-hidden="true"><use href="#candy"/></svg><span>蓝色 M 豆 <strong>+2% 浓度</strong></span></div>
     <div class="menu-item"><svg aria-hidden="true"><use href="#burger"/></svg><span>汉堡真香 <strong>−8% 浓度</strong></span></div>
@@ -86,7 +145,7 @@
     <div class="fuel-row"><span class="fuel-label">可可浓度 <strong id="purityValue">72%</strong></span><div class="fuel-track" id="purityTrack" role="progressbar" aria-label="可可浓度，80%可开启毒雾" aria-valuemin="0" aria-valuemax="80" aria-valuenow="72"><span id="purityFill"></span><i></i></div><button class="power-btn" id="powerBtn" disabled title="80%浓度时按 E：开启毒雾，挡住斧头">E 毒雾</button><span class="rival-status" id="rivalStatus">炫神待机</span></div>
     <div class="dialogue-row" aria-live="polite"><span class="speaker" id="speaker">小蛇</span><span id="dialogue">72%？差这 8% 也不行。</span></div>
    </div>
-   <div class="board-frame" id="boardFrame"><div class="board">
+    <div class="board-frame" id="boardFrame"><div class="board-window-bar"><span class="window-lights"><i></i><i></i><i></i></span><span>SNACK SNAKE <b>/</b> ARENA</span><span class="window-build">COCOA WARS · 02</span></div><div class="board">
     <canvas id="game" width="672" height="560" tabindex="0" aria-label="贪吃蛇游戏画布，用方向键或 WASD 移动，空格暂停。">你的浏览器需要支持 Canvas 才能游玩。</canvas>
     <div class="board-top-note">COCOA ARENA / 小蛇 VS 抵抗军</div><div class="board-status"><i class="status-dot"></i><span id="gameStatus">等待浓度拉满</span></div><div class="corner-flower" aria-hidden="true">✳</div>
     <div class="overlay" id="overlay"><div class="start-card"><div class="tiny-title" id="cardEyebrow">72% IS NOT 80%</div><svg class="card-glasses" aria-hidden="true"><use href="#glasses"/></svg><h2 id="cardTitle">差这 8%，真不行。</h2><p class="overlay-copy" id="cardCopy">吃豆长大，找 80% 黑巧。<br>炫神两连砍来了，按 E 开毒雾。</p><button class="primary-btn" id="startBtn"><span id="startLabel">开吃</span><svg class="fill" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 2 8 6-8 6Z"/></svg></button><p class="start-hint" id="startHint">也可以按 <kbd>空格</kbd> 开始 · 方向键 / WASD 移动</p></div></div>
@@ -98,7 +157,7 @@
  </main>
  <footer class="footer"><span class="english">72% IS NOT 80%. <b>♡</b></span><span>Viper × 炫神 · 梗改编贪吃蛇</span><span class="english">我砍，我再砍。</span></footer>
 </div>
-<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><h2 id="helpTitle">小蛇 × 炫神：开吃指南</h2><button class="icon-btn" id="closeHelp" aria-label="关闭玩法说明">×</button></div><p>核心还是贪吃蛇：吃东西长大，方向键转弯，避开墙和自己。小蛇攒浓度开毒雾；炫神会先标出一横一竖，再连砍两次。</p><ul class="rules"><li>方向键 / WASD<span>控制方向</span></li><li>空格 / P<span>暂停、继续</span></li><li>R<span>重新开始</span></li><li>蓝色 M 豆<span>+10 分、+2% 浓度</span></li><li>72% / 80% 黑巧<span>+10 / +20 分，设为该浓度</span></li><li>汉堡<span>+30 分，浓度减 8%</span></li><li>满 80% 的下一口<span>M 豆、汉堡分数翻倍</span></li><li>E / 点击毒雾<span>消耗 8% 浓度，挡斧头约 4 秒</span></li><li>炫神两连砍<span>橙线预告；只判定蛇头</span></li><li>蛇头挨砍<span>扣最多 20 分、掉最多 3 节尾巴</span></li><li>经典挑战<span>碰墙或咬到自己会结束</span></li><li>快乐穿墙<span>穿过边界，仍要避开自己</span></li></ul><p class="small-copy">挨砍还会掉 8% 浓度，最短保留 3 节。毒雾只挡斧头，不能免除撞墙或撞自己的惩罚。手机支持滑动和方向键；每吃 4 份食物会稍微加速。</p><fieldset class="voice-samples"><legend>原声试听 · 点一句，听一句</legend><div><button data-voice="interfere">不要妨碍我</button><button data-voice="poison">我的毒没有解药</button><button data-voice="protect">我不是为了抵抗…</button><button data-voice="kenchana">肯恰那</button><button data-voice="cut">我砍！</button><button data-voice="cutAgain">我再砍！</button></div><p>吃到满浓度、释放毒雾和炫神出招时，会自动触发相应台词。音效与人声默认开启，各自可以单独关闭。第一次点“开吃”后浏览器才允许播放声音。<br>原声剪自你选的<a href="https://www.bilibili.com/video/BV18YbV6FECh/" target="_blank" rel="noopener noreferrer">「茉子不是茉」混剪 ↗</a>，保留片段中的背景音。</p></fieldset><details class="meme-notes"><summary>梗从哪来：为什么这两边会对上？</summary><p>蛇方对应 Viper：巧克力与蓝色 M 豆、汉堡反差，以及借《无畏契约》同名角色薇蝮语音拼接的“我的毒没有解药”“不要妨碍我”。炫神一方在二创里是抵抗军，用“保护大家”和“我砍，我再砍”回应；“肯恰那”是这套混剪的蛇方洗脑段落。</p><p>游戏机制和对白组合为夸张改编，角色语音、二创台词不等于选手原话。</p><a href="https://www.bilibili.com/video/BV18YbV6FECh/" target="_blank" rel="noopener noreferrer">双方对白的二创出处 ↗</a><a href="https://www.bilibili.com/video/BV1Lh411577B/" target="_blank" rel="noopener noreferrer">薇蝮角色语音 ↗</a><a href="https://weibo.com/5794519372/5066950486790195" target="_blank" rel="noopener noreferrer">80% 巧克力梗的当时报道 ↗</a></details><button class="primary-btn" id="gotIt">知道了，去开饭</button></dialog>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><h2 id="helpTitle">小蛇 × 炫神：开吃指南</h2><button class="icon-btn" id="closeHelp" aria-label="关闭玩法说明">×</button></div><p>核心还是贪吃蛇：吃东西长大，方向键转弯，避开墙和自己。小蛇攒浓度开毒雾；炫神会先标出一横一竖，再连砍两次。</p><ul class="rules"><li>方向键 / WASD<span>控制方向</span></li><li>空格 / P<span>暂停、继续</span></li><li>R<span>重新开始</span></li><li>蓝色 M 豆<span>+10 分、+2% 浓度</span></li><li>72% / 80% 黑巧<span>+10 / +20 分，设为该浓度</span></li><li>汉堡<span>+30 分，浓度减 8%</span></li><li>满 80% 的下一口<span>M 豆、汉堡分数翻倍</span></li><li>E / 点击毒雾<span>消耗 8% 浓度，挡斧头约 4 秒</span></li><li>炫神两连砍<span>橙线预告；只判定蛇头</span></li><li>蛇头挨砍<span>扣最多 20 分、掉最多 3 节尾巴</span></li><li>经典挑战<span>碰墙或咬到自己会结束</span></li><li>快乐穿墙<span>穿过边界，仍要避开自己</span></li></ul><p class="small-copy">挨砍还会掉 8% 浓度，最短保留 3 节。毒雾只挡斧头，不能免除撞墙或撞自己的惩罚。手机支持滑动和方向键；每吃 4 份食物会稍微加速。</p><fieldset class="voice-samples"><legend>原声试听 · 点一句，听一句</legend><div><button data-voice="interfere">不要妨碍我</button><button data-voice="poison">我的毒没有解药</button><button data-voice="protect">我不是为了抵抗…</button><button data-voice="kenchana">肯恰那</button><button data-voice="cut">我砍！</button><button data-voice="cutAgain">我再砍！</button></div><p>吃到满浓度、释放毒雾和炫神出招时，会自动触发相应台词。音效与人声默认开启，各自可以单独关闭。第一次点“开吃”后浏览器才允许播放声音。<br>原声剪自你选的<a href="https://www.bilibili.com/video/BV18YbV6FECh/" target="_blank" rel="noopener noreferrer">「茉子不是茉」混剪 ↗</a>，保留片段中的背景音。</p></fieldset><details class="meme-notes"><summary>梗从哪来：为什么这两边会对上？</summary><p>蛇方对应 Viper：巧克力与蓝色 M 豆、汉堡反差，以及借《无畏契约》同名角色薇蝮语音拼接的“我的毒没有解药”“不要妨碍我”。炫神一方在二创里是抵抗军，用“保护大家”和“我砍，我再砍”回应；“肯恰那”是这套混剪的蛇方洗脑段落。</p><p>游戏机制和对白组合为夸张改编，角色语音、二创台词不等于选手原话。</p><p>小蛇的战袍按 Viper 的队伍经历换色：BLG 粉蓝、Griffin 红白、EDG 黑白、HLE 橙灰。Griffin 是他崭露头角的队伍，EDG 是 2021 世界赛夺冠的那一站，HLE 也有他的两段经历。切颜色随时都行，不影响分数和进度。</p><a href="https://www.bilibili.com/video/BV18YbV6FECh/" target="_blank" rel="noopener noreferrer">双方对白的二创出处 ↗</a><a href="https://www.bilibili.com/video/BV1Lh411577B/" target="_blank" rel="noopener noreferrer">薇蝮角色语音 ↗</a><a href="https://weibo.com/5794519372/5066950486790195" target="_blank" rel="noopener noreferrer">80% 巧克力梗的当时报道 ↗</a></details><button class="primary-btn" id="gotIt">知道了，去开饭</button></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div><div id="announcement" role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)"></div>
 <audio id="voicePlayer" preload="auto" hidden></audio>
 <script>
@@ -108,17 +167,66 @@
 <script>
 'use strict';
 const $ = id => document.getElementById(id);
+// Small 7×7 icons follow the reference site's PixelIcon grid.
+const pixelShapes={
+ sound:['0010000','0110100','1110010','1110101','1110010','0110100','0010000'],
+ muted:['0010000','0110101','1110010','1110000','1110010','0110101','0010000'],
+ play:['0100000','0110000','0111000','0111100','0111000','0110000','0100000'],
+ pause:['0110110','0110110','0110110','0110110','0110110','0110110','0110110'],
+ restart:['0111100','0100010','1110001','0000001','1000001','0100010','0011100'],
+ arena:['1111111','1000001','1001001','1011101','1001001','1000001','1111111'],
+ wrap:['0010000','0111110','1010001','1000001','1000101','0111110','0000100'],
+ trophy:['0111110','1101011','1101011','0111110','0011100','0001000','0011100']
+};
+function pixelIcon(name,id=''){return `<svg class="pixel-icon" ${id?`id="${id}"`:''} viewBox="0 0 9 9" aria-hidden="true" shape-rendering="crispEdges">${pixelShapes[name].flatMap((row,y)=>[...row].map((v,x)=>v==='1'?`<rect x="${x+1}" y="${y+1}" width="1" height="1"/>`:'')).join('')}</svg>`}
+$('restartBtn').innerHTML=pixelIcon('restart');
+$('startBtn').querySelector('svg').outerHTML=pixelIcon('play');
+document.querySelector('[data-mode="classic"] svg').outerHTML=pixelIcon('arena');
+document.querySelector('[data-mode="wrap"] svg').outerHTML=pixelIcon('wrap');
+document.querySelector('.record-icon').outerHTML=pixelIcon('trophy').replace('pixel-icon','pixel-icon record-icon');
 const canvas=$('game'),ctx=canvas.getContext('2d'),COLS=24,ROWS=20,CELL=28,W=672,H=560;
+const palettes={
+ blg:{name:'BLG · 粉蓝',note:'BLG 粉蓝，小蛇现在这件。',accent:'#e7a6bd',accent2:'#96bfd8',bodyA:'#efb0c5',bodyB:'#a5cbe1',head:'#a0cce5',stroke:'#648c89',board:'#191a1c',boardAlt:'#1d1e20',shield:'#a8c69e'},
+ griffin:{name:'Griffin · 红白',note:'Griffin 红白，梦开始的地方。',accent:'#df7b7d',accent2:'#e9e3dd',bodyA:'#d96167',bodyB:'#e9e3dd',head:'#eee5df',stroke:'#a65c5e',board:'#1c191a',boardAlt:'#231e20',shield:'#d2aaa6'},
+ edg:{name:'EDG · 黑白',note:'EDG 黑白，2021 那座冠军还记得吧。',accent:'#dedfe1',accent2:'#969ba3',bodyA:'#555b64',bodyB:'#e0e1e2',head:'#e0e1e2',stroke:'#8e949c',board:'#191a1c',boardAlt:'#202124',shield:'#bbc0c8'},
+ hle:{name:'HLE · 橙灰',note:'HLE：橙色配上两档灰，来自队徽里的橙灰识别色。',accent:'#e19a4e',accent2:'#b5b9bb',bodyA:'#df9748',bodyB:'#aeb4b7',head:'#e3a35d',stroke:'#806144',board:'#1d1b19',boardAlt:'#24211e',shield:'#c7a06f'}
+};
+let activePalette=palettes.blg;
 const e=new SnackEngine(), reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let accumulator=0,lastTime=0,particles=[],floats=[],sound=true,audio,toastTimer,shakeTimer,touchStart=null,helpWasRunning=false,recordAtStart=0;
 const store={get(key){try{return Math.max(0,Number(localStorage.getItem('snacksnake.v2.'+key))||0)}catch{return 0}},set(key,value){try{localStorage.setItem('snacksnake.v2.'+key,String(value))}catch{}}};
 let best={classic:store.get('classic'),wrap:store.get('wrap')};
+function applyPalette(name,showToast=false){
+ const key=palettes[name]?name:'blg';activePalette=palettes[key];const root=document.documentElement;
+ root.dataset.palette=key;root.style.setProperty('--accent',activePalette.accent);root.style.setProperty('--accent-2',activePalette.accent2);root.style.setProperty('--board-bg',activePalette.board);root.style.setProperty('--board-alt',activePalette.boardAlt);root.style.setProperty('--mascot-outline',activePalette.stroke);root.style.setProperty('--mascot-body',activePalette.bodyB);root.style.setProperty('--mascot-accent',activePalette.bodyA);root.style.setProperty('--mascot-head',activePalette.head);
+ document.querySelectorAll('.palette-option[data-palette]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.palette===key)));
+ $('paletteCurrent').textContent=activePalette.name;$('paletteNote').textContent=activePalette.note;
+ try{localStorage.setItem('snacksnake.palette',key)}catch{}
+ if(showToast)toast('换上 '+activePalette.name+' 配色。');
+}
+let savedPalette='blg';try{savedPalette=localStorage.getItem('snacksnake.palette')||'blg'}catch{}applyPalette(savedPalette);
 function fitCanvas(){const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
 fitCanvas();window.addEventListener('resize',fitCanvas);
+const glyphCanvas=$('glyphField'),glyphCtx=glyphCanvas.getContext('2d'),glyphAlphabet='01+−*:.';
+let glyphCols=0,glyphRows=0,glyphSize=10,glyphs=[],glyphPointer={x:-9999,y:-9999},glyphFrame=0;
+function hexRgb(hex){const n=parseInt(hex.slice(1),16);return[(n>>16)&255,(n>>8)&255,n&255]}
+function drawGlyphField(){
+ const w=innerWidth,h=innerHeight,accent=hexRgb(activePalette.accent),accent2=hexRgb(activePalette.accent2);glyphCtx.clearRect(0,0,w,h);glyphCtx.font=`${innerWidth<780?10:7}px DepartureMono,monospace`;glyphCtx.textBaseline='middle';
+ for(let row=0;row<glyphRows;row++)for(let col=0;col<glyphCols;col++){
+  const x=col*glyphSize+glyphSize/2,y=row*glyphSize+glyphSize/2,dx=(x-w*.86)/(w*.2),dy=(y-h*.04)/(h*.2),sun=Math.max(0,1-Math.sqrt(dx*dx+dy*dy));
+  const mx=(x-glyphPointer.x)/175,my=(y-glyphPointer.y)/175,mouse=Math.max(0,1-Math.sqrt(mx*mx+my*my));
+  const glow=Math.min(.48,.025+sun*.12+mouse*.28),rgb=mouse>.12||sun>.72?(mouse>sun?accent:accent2):[196,197,200];
+  glyphCtx.fillStyle=`rgba(${rgb[0]},${rgb[1]},${rgb[2]},${glow})`;glyphCtx.fillText(glyphs[row*glyphCols+col],x,y);
+ }
+}
+function resizeGlyphField(){const dpr=Math.min(devicePixelRatio||1,2);glyphSize=innerWidth<780?14:10;glyphCols=Math.ceil(innerWidth/glyphSize);glyphRows=Math.ceil(innerHeight/glyphSize);glyphCanvas.width=Math.ceil(innerWidth*dpr);glyphCanvas.height=Math.ceil(innerHeight*dpr);glyphCtx.setTransform(dpr,0,0,dpr,0,0);glyphs=Array.from({length:glyphCols*glyphRows},()=>glyphAlphabet[Math.floor(Math.random()*glyphAlphabet.length)]);drawGlyphField()}
+function breatheGlyphs(){for(let i=0;i<7;i++){const n=Math.floor(Math.random()*glyphs.length);glyphs[n]=glyphAlphabet[Math.floor(Math.random()*glyphAlphabet.length)]}drawGlyphField()}
+resizeGlyphField();window.addEventListener('resize',resizeGlyphField);window.addEventListener('pointermove',event=>{glyphPointer={x:event.clientX,y:event.clientY};cancelAnimationFrame(glyphFrame);glyphFrame=requestAnimationFrame(drawGlyphField)},{passive:true});
+if(!reducedMotion)setInterval(breatheGlyphs,150);
 function toast(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2300)}
 function audioReady(){try{audio??=new(window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume().catch(()=>{});}catch{sound=false;syncSound()}}
 function beep(freq,duration=.08,delay=0,volume=.045,type='sine'){if(!sound||!audio)return;try{const t=audio.currentTime+delay,osc=audio.createOscillator(),gain=audio.createGain();osc.type=type;osc.frequency.setValueAtTime(freq,t);gain.gain.setValueAtTime(0,t);gain.gain.linearRampToValueAtTime(volume,t+.008);gain.gain.exponentialRampToValueAtTime(.001,t+duration);osc.connect(gain);gain.connect(audio.destination);osc.start(t);osc.stop(t+duration+.02)}catch{}}
-function syncSound(){$('soundBtn').setAttribute('aria-pressed',String(sound));$('soundBtn').setAttribute('aria-label',sound?'关闭音效':'开启音效');$('soundBtn').title=sound?'关闭音效':'开启音效';$('soundIcon').innerHTML=sound?'<path d="m9 4-4 3H2v6h3l4 3ZM13 7a5 5 0 0 1 0 6m2-9a9 9 0 0 1 0 12"/>':'<path d="m9 4-4 3H2v6h3l4 3ZM13 7l5 6m0-6-5 6"/>'}
+function syncSound(){$('soundBtn').setAttribute('aria-pressed',String(sound));$('soundBtn').setAttribute('aria-label',sound?'关闭音效':'开启音效');$('soundBtn').title=sound?'关闭音效':'开启音效';$('soundBtn').innerHTML=pixelIcon(sound?'sound':'muted','soundIcon')}
 const voiceClips=/* VOICE_CLIPS */{};
 const voice=new VoiceDirector($('voicePlayer'),voiceClips,{onChange:syncVoice,onError:()=>toast('人声未能播放，请再点一次人声开关。')});
 voice.setEnabled(true);
@@ -133,7 +241,7 @@ $('voicePlayer').addEventListener('playing',syncVoice);
 function speak(key,options){voice.play(key,options)}
 function updateUI(){
  $('score').textContent=String(e.score).padStart(3,'0');$('best').textContent=String(best[e.mode]).padStart(3,'0');$('level').textContent='LV. '+String(e.level).padStart(2,'0');
- $('pauseBtn').disabled=!['running','paused'].includes(e.status);$('pauseBtn').setAttribute('aria-label',e.status==='paused'?'继续':'暂停');$('pauseBtn').innerHTML=e.status==='paused'?'<svg class="fill" viewBox="0 0 20 20"><path d="m6 4 10 6-10 6Z"/></svg>':'<svg viewBox="0 0 20 20"><path d="M7 5v10m6-10v10"/></svg>';
+ $('pauseBtn').disabled=!['running','paused'].includes(e.status);$('pauseBtn').setAttribute('aria-label',e.status==='paused'?'继续':'暂停');$('pauseBtn').innerHTML=pixelIcon(e.status==='paused'?'play':'pause');
  $('gameStatus').textContent=({ready:'等待浓度拉满',running:e.shield?'不要妨碍我 · 毒雾中':e.mode==='wrap'?'穿墙找黑巧':'浓度保卫战',paused:'肯恰那，休息一下',over:'再来一颗 80%',won:'全场可可，全部拿下'})[e.status];
  $('snackCount').textContent=e.totalFood?`M 豆 ${e.candies} · 黑巧 ${e.cocoa72+e.cocoa80} · 汉堡 ${e.burgers}`:'80% 时：M 豆 / 汉堡 ×2';
  $('purityValue').textContent=e.concentration+'%';$('purityFill').style.width=(e.concentration/80*100)+'%';$('purityTrack').setAttribute('aria-valuenow',String(e.concentration));$('purityTrack').classList.toggle('charged',e.concentration>=80);
@@ -176,27 +284,27 @@ function drawRival(t){
   else{ctx.fillRect(pos-CELL/2,0,CELL,H);path([[pos,0],[pos,H]],cut?'#b77b58':'#bea07c',cut?3:1.2);drawAxe(pos,cut?(t%350)/350*H:24,Math.PI/4)}ctx.restore();
  }
 }
-function drawHead(x,y,angle,t){ctx.save();ctx.translate(x,y);ctx.rotate(angle);const chomp=Math.sin(t/100)*.03;ctx.scale(1+chomp,1-chomp);ellipse(-1,4,15,11,'#64815f1a');rect(-15,-15,30,30,12,'#a0cce5','#648c89',1.1);
+function drawHead(x,y,angle,t){ctx.save();ctx.translate(x,y);ctx.rotate(angle);const chomp=Math.sin(t/100)*.03;ctx.scale(1+chomp,1-chomp);ellipse(-1,4,15,11,'#0005');rect(-15,-15,30,30,12,activePalette.head,activePalette.stroke,1.1);
  ellipse(6,-11,3.5,1.7,'#f1a7bf99');ellipse(6,11,3.5,1.7,'#f1a7bf99');ctx.fillStyle='#2f4240';ellipse(5,-7,1.7,1.9,'#2f4240');ellipse(5,7,1.7,1.9,'#2f4240');ctx.strokeStyle='#303d3a';ctx.lineWidth=1.6;ctx.fillStyle='#fff2';for(const cy of [-7,7]){ctx.beginPath();ctx.arc(5,cy,6.5,0,Math.PI*2);ctx.fill();ctx.stroke()}path([[4,-.5],[4,.5]],'#303d3a',1.6);path([[2,-13],[-3,-15]],'#303d3a',1.4);path([[2,13],[-3,15]],'#303d3a',1.4);path([[2,-10],[3,-11]],'#fff9',1.1);path([[2,4],[3,3]],'#fff9',1.1);if(e.status!=='over'&&Math.sin(t/350)>.8)path([[15,0],[20,0],[23,-2],[20,0],[23,2]],'#d883a2',1.5);ctx.restore()}
 function interpolated(i,alpha){const now=e.snake[i],prev=e.previous[Math.min(i,e.previous.length-1)]||now;if(Math.abs(now.x-prev.x)>1||Math.abs(now.y-prev.y)>1)return{x:(now.x+.5)*CELL,y:(now.y+.5)*CELL};return{x:(prev.x+(now.x-prev.x)*alpha+.5)*CELL,y:(prev.y+(now.y-prev.y)*alpha+.5)*CELL}}
-function draw(t,dt){ctx.clearRect(0,0,W,H);ctx.fillStyle='#f2f4e7';ctx.fillRect(0,0,W,H);ctx.fillStyle='#e8eedc';for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++)if((x+y)%2===0)ctx.fillRect(x*CELL,y*CELL,CELL,CELL);
+function draw(t,dt){ctx.clearRect(0,0,W,H);ctx.fillStyle=activePalette.board;ctx.fillRect(0,0,W,H);ctx.fillStyle=activePalette.boardAlt;for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++)if((x+y)%2===0)ctx.fillRect(x*CELL,y*CELL,CELL,CELL);ctx.strokeStyle='#ffffff06';ctx.lineWidth=1;ctx.beginPath();for(let x=0;x<=COLS;x++){ctx.moveTo(x*CELL+.5,0);ctx.lineTo(x*CELL+.5,H)}for(let y=0;y<=ROWS;y++){ctx.moveTo(0,y*CELL+.5);ctx.lineTo(W,y*CELL+.5)}ctx.stroke();
  // Small flowers belong to the garden, outside the visual focus of play.
- for(const [x,y] of [[52,52],[610,479],[83,466]]){ctx.save();ctx.translate(x,y);ctx.fillStyle='#c8d3b4';for(let j=0;j<4;j++){ctx.rotate(Math.PI/2);ellipse(0,4,1.8,2.6,'#c8d3b4')}ellipse(0,0,1.3,1.3,'#f3f4e6');ctx.restore()}
+ for(const [x,y] of [[52,52],[610,479],[83,466]]){ctx.save();ctx.translate(x,y);ctx.fillStyle='#ffffff18';for(let j=0;j<4;j++){ctx.rotate(Math.PI/2);ellipse(0,4,1.8,2.6,'#ffffff18')}ellipse(0,0,1.3,1.3,activePalette.board);ctx.restore()}
  drawRival(t);
  for(const f of e.food){const bob=reducedMotion?0:Math.sin(t/400+f.x)*2.3;const x=(f.x+.5)*CELL,y=(f.y+.5)*CELL+bob;if(f.type==='burger')drawBurger(x,y,1.08);else if(f.type==='chocolate')drawChocolate(x,y,f.purity);else drawCandy(x,y,f.color,1.02)}
  const alpha=e.status==='running'?Math.min(1,accumulator/e.interval):1,points=e.snake.map((_,i)=>interpolated(i,alpha));
- if(e.shield&&points[0]){const p=points[0],g=ctx.createRadialGradient(p.x,p.y,5,p.x,p.y,88);g.addColorStop(0,'#9ebf7e66');g.addColorStop(1,'#9ebf7e00');ctx.fillStyle=g;ctx.fillRect(p.x-88,p.y-88,176,176);ctx.beginPath();ctx.arc(p.x,p.y,30+(reducedMotion?0:Math.sin(t/160)*2),0,Math.PI*2);ctx.strokeStyle='#8eaf6e88';ctx.lineWidth=1.7;ctx.stroke()}
- for(let i=points.length-1;i>=0;i--){const p=points[i],next=points[i+1];if(next&&Math.abs(next.x-p.x)<CELL*1.6&&Math.abs(next.y-p.y)<CELL*1.6)path([[next.x,next.y+2],[p.x,p.y+2]],'#71856822',23);ellipse(p.x,p.y+2,12,12,'#71856818')}
- for(let i=points.length-1;i>=1;i--){const p=points[i],next=points[i+1],color=i%4<2?'#efb0c5':'#a5cbe1';if(next&&Math.abs(next.x-p.x)<CELL*1.6&&Math.abs(next.y-p.y)<CELL*1.6)path([[next.x,next.y],[p.x,p.y]],color,22);ellipse(p.x,p.y,11.5,11.5,color);if(i%2===1)ellipse(p.x-2,p.y-4,4.2,1.7,'#fff5')}
- if(points[0]){const angles={right:0,down:Math.PI/2,left:Math.PI,up:-Math.PI/2};if(points[1]&&Math.abs(points[0].x-points[1].x)<CELL*1.6&&Math.abs(points[0].y-points[1].y)<CELL*1.6)path([[points[1].x,points[1].y],[points[0].x,points[0].y]],'#a5cbe1',22);drawHead(points[0].x,points[0].y,angles[e.direction],t)}
+ if(e.shield&&points[0]){const p=points[0],rgb=hexRgb(activePalette.shield),g=ctx.createRadialGradient(p.x,p.y,5,p.x,p.y,88);g.addColorStop(0,`rgba(${rgb.join(',')},.34)`);g.addColorStop(1,`rgba(${rgb.join(',')},0)`);ctx.fillStyle=g;ctx.fillRect(p.x-88,p.y-88,176,176);ctx.beginPath();ctx.arc(p.x,p.y,30+(reducedMotion?0:Math.sin(t/160)*2),0,Math.PI*2);ctx.strokeStyle=`rgba(${rgb.join(',')},.68)`;ctx.lineWidth=1.7;ctx.stroke()}
+ for(let i=points.length-1;i>=0;i--){const p=points[i],next=points[i+1];if(next&&Math.abs(next.x-p.x)<CELL*1.6&&Math.abs(next.y-p.y)<CELL*1.6)path([[next.x,next.y+2],[p.x,p.y+2]],'#0006',23);ellipse(p.x,p.y+2,12,12,'#0005')}
+ for(let i=points.length-1;i>=1;i--){const p=points[i],next=points[i+1],color=i%4<2?activePalette.bodyA:activePalette.bodyB;if(next&&Math.abs(next.x-p.x)<CELL*1.6&&Math.abs(next.y-p.y)<CELL*1.6)path([[next.x,next.y],[p.x,p.y]],color,22);ellipse(p.x,p.y,11.5,11.5,color);if(i%2===1)ellipse(p.x-2,p.y-4,4.2,1.7,'#ffffff88')}
+ if(points[0]){const angles={right:0,down:Math.PI/2,left:Math.PI,up:-Math.PI/2};if(points[1]&&Math.abs(points[0].x-points[1].x)<CELL*1.6&&Math.abs(points[0].y-points[1].y)<CELL*1.6)path([[points[1].x,points[1].y],[points[0].x,points[0].y]],activePalette.bodyB,22);drawHead(points[0].x,points[0].y,angles[e.direction],t)}
  for(const p of particles){p.life-=dt;p.x+=p.vx*dt/1000;p.y+=p.vy*dt/1000;p.vy+=95*dt/1000;ctx.globalAlpha=Math.max(0,p.life/600);ellipse(p.x,p.y,p.size,p.size,p.color)}ctx.globalAlpha=1;particles=particles.filter(p=>p.life>0);
- for(const f of floats){f.life-=dt;f.y-=dt*.035;ctx.globalAlpha=Math.min(1,Math.max(0,f.life/250));ctx.fillStyle='#526b49';ctx.font='bold 17px Arial,sans-serif';ctx.textAlign='center';ctx.fillText(f.text,f.x,f.y)}ctx.globalAlpha=1;floats=floats.filter(f=>f.life>0);
+ for(const f of floats){f.life-=dt;f.y-=dt*.035;ctx.globalAlpha=Math.min(1,Math.max(0,f.life/250));ctx.fillStyle=activePalette.accent;ctx.font='bold 17px DepartureMono,Arial,sans-serif';ctx.textAlign='center';ctx.fillText(f.text,f.x,f.y)}ctx.globalAlpha=1;floats=floats.filter(f=>f.life>0);
 }
 function onEvent(event){
  if(!event)return;
  if(event.type==='eat'){
   const f=event.food,x=(f.x+.5)*CELL,y=(f.y+.5)*CELL;
-  if(!reducedMotion){for(let i=0;i<12;i++)particles.push({x,y,vx:(Math.random()-.5)*135,vy:(Math.random()-.75)*130,life:600,size:2+Math.random()*2,color:['#ecabc3','#9fc8e2','#cfb86e','#a4b787'][i%4]});floats.push({x,y:y-12,life:850,text:'+'+event.points+(event.multiplier===2?' ×2':'')})}
+  if(!reducedMotion){for(let i=0;i<12;i++)particles.push({x,y,vx:(Math.random()-.5)*135,vy:(Math.random()-.75)*130,life:600,size:2+Math.random()*2,color:[activePalette.bodyA,activePalette.bodyB,'#cfb86e',activePalette.shield][i%4]});floats.push({x,y:y-12,life:850,text:'+'+event.points+(event.multiplier===2?' ×2':'')})}
   if(event.charged){setDialogue('小蛇','我的毒没有解药。浓度 80%，按 E！');speak('poison');beep(523,.1);beep(784,.1,.08);beep(1047,.16,.16)}
   else if(f.type==='burger'){setDialogue('小蛇',event.multiplier===2?'汉堡 ×2，浓度掉了也得吃。':'中餐太油？汉堡倒是真香。');beep(523,.09);beep(784,.12,.075)}
   else if(f.type==='chocolate'&&f.purity===72){setDialogue('小蛇','72%？这浓度不对啊！');beep(330,.12);beep(294,.14,.1)}
@@ -224,6 +332,7 @@ $('voiceBtn').addEventListener('click',()=>{
 $('voiceVolume').addEventListener('input',event=>{const value=Number(event.target.value);voice.setVolume(value/100);$('volumeValue').textContent=value+'%'});
 document.querySelectorAll('[data-voice]').forEach(button=>button.addEventListener('click',()=>{voice.setEnabled(true);speak(button.dataset.voice,{priority:10,interrupt:true})}));
 document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>{if(['running','paused'].includes(e.status))return;e.mode=b.dataset.mode;$('modeNote').textContent=e.mode==='wrap'?'可以穿墙，斧头照砍，毒雾照开。':'经典贪吃蛇规则，加上炫神两连砍。';reset(false)}));
+document.querySelectorAll('.palette-option[data-palette]').forEach(button=>button.addEventListener('click',()=>applyPalette(button.dataset.palette,true)));
 const keyDirs={ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down',ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right'};
 document.addEventListener('keydown',event=>{if($('helpDialog').open||event.altKey||event.ctrlKey||event.metaKey)return;const tag=event.target.tagName;if(['INPUT','TEXTAREA','SELECT'].includes(tag))return;if(event.key==='e'||event.key==='E'){event.preventDefault();if(!event.repeat)usePower();return}if(keyDirs[event.key]){event.preventDefault();steer(keyDirs[event.key]);return}if(event.code==='Space'||event.key==='p'||event.key==='P'){if(tag==='BUTTON'&&event.code==='Space')return;event.preventDefault();if(!event.repeat)togglePause()}else if(event.key==='r'||event.key==='R'){event.preventDefault();if(!event.repeat)reset(true)}});
 document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('pointerdown',event=>{event.preventDefault();steer(b.dataset.dir)}));
