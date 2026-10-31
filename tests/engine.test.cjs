@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const Engine = require('../src/engine.js');
+function cueRival(e) { e.steps=28; e.rival.nextAt=0; e.rival.deadline=0; e.advanceRival(); }
 test('eating M candy adds ten points, grows once and replaces food safely', () => {
   const e = new Engine(); e.start(); for(let i=0;i<4;i++) e.step();
   assert.equal(e.score, 10); assert.equal(e.candies,1); assert.equal(e.snake.length,7); assert.equal(e.food.length,6);
@@ -53,25 +54,25 @@ test('power needs a running game, full concentration and no active shield', () =
   e.concentration=80;assert.equal(e.activate(),null);e.pause();e.step();assert.equal(e.shield,26);
 });
 test('rival telegraphs both cuts and can only damage a head on the active line once', () => {
-  const e=new Engine();e.score=100;e.steps=28;e.advanceRival();assert.equal(e.rival.phase,'warning');assert.equal(e.score,100);
+  const e=new Engine();e.score=100;cueRival(e);assert.equal(e.rival.phase,'warning');assert.equal(e.score,100);
   e.steps=e.rival.until;e.advanceRival();assert.equal(e.rival.phase,'cut1');assert.equal(e.score,80);assert.equal(e.snake.length,3);assert.equal(e.rivalHits,1);
   e.steps++;e.advanceRival();assert.equal(e.score,80);
   e.steps=e.rival.until;e.advanceRival();assert.equal(e.rival.phase,'between');e.steps=e.rival.until;e.advanceRival();
   assert.equal(e.rival.phase,'cut2');assert.equal(e.score,60);assert.equal(e.snake.length,3);assert.equal(e.rivalHits,2);
 });
 test('toxic shield blocks axes and dodging both cuts triggers kenchana', () => {
-  const e=new Engine();e.score=10;e.shield=26;e.steps=28;e.advanceRival();e.steps=e.rival.until;e.advanceRival();
+  const e=new Engine();e.score=10;e.shield=26;cueRival(e);e.steps=e.rival.until;e.advanceRival();
   assert(e.events.some(x=>x.type==='blocked'));assert.equal(e.score,10);assert.equal(e.rivalHits,0);
   e.steps=e.rival.until;e.advanceRival();e.steps=e.rival.until;e.advanceRival();e.steps=e.rival.until;e.advanceRival();assert.equal(e.perfectDodges,1);assert(e.events.some(x=>x.type==='dodge'));
 });
 test('rival cuts never produce negative score and reset clears all meme state', () => {
-  const e=new Engine();e.steps=28;e.advanceRival();e.steps=e.rival.until;e.advanceRival();assert.equal(e.score,0);e.reset();
+  const e=new Engine();cueRival(e);e.steps=e.rival.until;e.advanceRival();assert.equal(e.score,0);e.reset();
   assert.equal(e.concentration,72);assert.equal(e.shield,0);assert.equal(e.rivalHits,0);assert.equal(e.rival.phase,'waiting');assert.equal(e.events.length,0);
 });
 
 test('attack timing leaves room for complete voices even after speed increases',()=>{
  for(const foods of [0,100]){
-  const e=new Engine();e.candies=foods;e.steps=28;e.advanceRival();
+  const e=new Engine();e.candies=foods;cueRival(e);
   assert((e.rival.until-e.steps)*e.interval>=3900);
   e.steps=e.rival.until;e.advanceRival();const first=e.steps;
   e.steps=e.rival.until;e.advanceRival();e.steps=e.rival.until;e.advanceRival();
