@@ -54,4 +54,6 @@ python3 -m http.server 8765
 
 生成页面保存在根目录、`notes/`、`projects/`、`play/` 和 `site-assets/`。部署到域名根目录即可；旧 `/snacksnake/` 入口需要映射到 `play/`。发布清单见 `scripts/package_site.py`，只包含公开页面与资源。
 
+`sw.js` 用于退出域名以前的网盘离线缓存：旧浏览器更新到这个脚本后，会注销旧 Service Worker 并重新加载当前页面，不清除 Cookie、游戏设置或其他域名的数据。新站不注册 Service Worker。部署时须保留这个文件，以 JavaScript 类型和 `Cache-Control: no-store` 返回；直接删除会让部分旧访客继续停在缓存的网盘界面。
+
 代码采用 [MIT](LICENSE)，原声等第三方素材单独列在 [素材说明](NOTICE.md)。

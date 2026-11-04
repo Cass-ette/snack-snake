@@ -6,7 +6,7 @@ import hashlib,json,runpy,sys,tarfile
 
 root=Path(__file__).resolve().parents[1]
 notes=runpy.run_path(str(root/'src/site/content.py'))['NOTES']
-paths=['index.html','404.html','favicon.svg','robots.txt','sitemap.xml',
+paths=['index.html','404.html','favicon.svg','robots.txt','sitemap.xml','sw.js',
        'play/index.html','play/favicon.svg','projects/snack-snake/index.html']
 paths += [f'notes/{note["slug"]}/index.html' for note in notes]
 paths += ['site-assets/'+name for name in ['site.css','site.js','DepartureMono-Regular.woff2',

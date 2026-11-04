@@ -7,6 +7,7 @@ source=root/'src/site'
 notes=runpy.run_path(str(source/'content.py'))['NOTES']
 assets=root/'site-assets'
 assets.mkdir(exist_ok=True)
+shutil.copy2(source/'retire-worker.js',root/'sw.js')
 for origin,name in [
     (source/'style.css','site.css'),(source/'site.js','site.js'),
     (root/'assets/fonts/DepartureMono-Regular.woff2','DepartureMono-Regular.woff2'),
