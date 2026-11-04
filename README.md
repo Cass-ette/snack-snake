@@ -1,8 +1,14 @@
-# 粉蓝蛇蛇 · Snack Snake
+# 我的编程学习笔记 / 粉蓝蛇蛇
+
+这个仓库放的是 [viper3.icu](https://viper3.icu/) 的个人编程学习站，以及其中的 Canvas 小游戏练习。首页展示项目与开发笔记，游戏独立放在 `/play/`，电脑和手机都能玩。
+
+四篇笔记围绕当前项目的实际代码：游戏循环、输入缓冲、伪随机事件与语音队列。站点提供文章目录、搜索和分类；不需要数据库或前端框架。
+
+## 粉蓝蛇蛇 · Snack Snake
 
 给粉蓝小蛇戴上圆框眼镜，塞点 M 豆、黑巧和汉堡，再让炫神进来砍两刀。核心还是贪吃蛇，只是零食和干扰都多了一点。电脑、手机都能玩，打开网页就能开吃。
 
-**现在开玩：** [viper3.icu](https://viper3.icu/)，备案已通过，直接输域名就能开吃。原来的 [IP 入口（80 端口）](http://8.147.59.78:80/snacksnake/) 也继续能用。
+**现在开玩：** [直接试玩](https://viper3.icu/play/) · [项目介绍](https://viper3.icu/projects/snack-snake/)。原来的 [IP 入口（80 端口）](http://8.147.59.78:80/snacksnake/) 也继续能用。
 
 **代码已经开源。** 想改点什么、加点新活，欢迎拿去折腾，也欢迎提建议。
 
@@ -31,12 +37,21 @@
 
 ## 自己跑 / 自己改
 
-直接打开仓库里的 `index.html` 就能玩。也可以启动一个静态服务：
+直接打开仓库里的 `play/index.html` 就能玩。浏览完整学习站请在仓库根目录启动静态服务：
 
 ```sh
 python3 -m http.server 8765
 ```
 
-改 `src/` 后运行 `python3 scripts/build.py`，会生成带内嵌原声的单页 `index.html`；不需要前端构建工具。现有逻辑测试：`node --test tests/*.test.cjs`。
+打开 `http://127.0.0.1:8765/` 浏览学习站；游戏地址为 `/play/`。
+
+改 `src/` 后运行 `python3 scripts/build.py`，会生成站点全部页面和带内嵌原声的 `play/index.html`。只构建游戏可以加 `--game-only`；构建仅使用 Python 标准库，不需要前端构建工具。现有逻辑测试：`node --test tests/*.test.cjs`。
+
+- `src/site/content.py`：学习笔记正文。
+- `src/site/build.py`：首页、项目页、文章和站点地图的生成。
+- `src/site/style.css`、`src/site/site.js`：站点样式、字符光场、搜索和分类。
+- `src/engine.js`、`src/page.html`、`src/voice.js`：游戏规则、绘制和声音。
+
+生成页面保存在根目录、`notes/`、`projects/`、`play/` 和 `site-assets/`。部署到域名根目录即可；旧 `/snacksnake/` 入口需要映射到 `play/`。发布清单见 `scripts/package_site.py`，只包含公开页面与资源。
 
 代码采用 [MIT](LICENSE)，原声等第三方素材单独列在 [素材说明](NOTICE.md)。
