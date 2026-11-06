@@ -1,6 +1,6 @@
 # 我的编程学习笔记 / 粉蓝蛇蛇
 
-这个仓库放的是 [viper3.icu](https://viper3.icu/) 的个人编程学习站，以及其中的 Canvas 小游戏练习。首页展示项目与开发笔记，游戏独立放在 `/play/`，电脑和手机都能玩。
+这个仓库放的是 [viper3.icu](https://viper3.icu/) 的个人编程学习站，以及其中的 Canvas 小游戏练习。打开域名首页直接进入游戏，`/play/` 保留为同一游戏的入口；项目与开发笔记移至 [/notebook/](https://viper3.icu/notebook/)，游戏左上角可进入，电脑和手机都能玩。
 
 四篇笔记围绕当前项目的实际代码：游戏循环、输入缓冲、伪随机事件与语音队列。站点提供文章目录、搜索和分类；不需要数据库或前端框架。
 
@@ -43,7 +43,7 @@
 python3 -m http.server 8765
 ```
 
-打开 `http://127.0.0.1:8765/` 浏览学习站；游戏地址为 `/play/`。
+打开 `http://127.0.0.1:8765/` 直接玩游戏；学习站地址为 `/notebook/`，原游戏地址 `/play/` 继续可用。
 
 改 `src/` 后运行 `python3 scripts/build.py`，会生成站点全部页面和带内嵌原声的 `play/index.html`。只构建游戏可以加 `--game-only`；构建仅使用 Python 标准库，不需要前端构建工具。现有逻辑测试：`node --test tests/*.test.cjs`。
 
@@ -52,7 +52,7 @@ python3 -m http.server 8765
 - `src/site/style.css`、`src/site/site.js`：站点样式、字符光场、搜索和分类。
 - `src/engine.js`、`src/page.html`、`src/voice.js`：游戏规则、绘制和声音。
 
-生成页面保存在根目录、`notes/`、`projects/`、`play/` 和 `site-assets/`。部署到域名根目录即可；旧 `/snacksnake/` 入口需要映射到 `play/`。发布清单见 `scripts/package_site.py`，只包含公开页面与资源。
+生成页面保存在根目录、`notebook/`、`notes/`、`projects/`、`play/` 和 `site-assets/`。部署到域名根目录即可；旧 `/snacksnake/` 入口需要映射到 `play/`。发布清单见 `scripts/package_site.py`，只包含公开页面与资源。
 
 `sw.js` 用于退出域名以前的网盘离线缓存：旧浏览器更新到这个脚本后，会注销旧 Service Worker 并重新加载当前页面，不清除 Cookie、游戏设置或其他域名的数据。新站不注册 Service Worker。部署时须保留这个文件，以 JavaScript 类型和 `Cache-Control: no-store` 返回；直接删除会让部分旧访客继续停在缓存的网盘界面。
 

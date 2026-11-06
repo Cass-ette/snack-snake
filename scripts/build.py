@@ -3,7 +3,7 @@ import base64,json,runpy,sys
 root=Path(__file__).resolve().parent.parent
 src=root/'src'
 page=(src/'page.html').read_text()
-for name,mime in [('fonts/DepartureMono-Regular.woff2','font/woff2'),('images/grain-tile.png','image/png')]:
+for name,mime in [('fonts/DepartureMono-Regular.woff2','font/woff2'),('images/grain-tile.png','image/png'),('images/public-security.png','image/png')]:
  data=base64.b64encode((root/'assets'/name).read_bytes()).decode()
  page=page.replace('./assets/'+name,'data:'+mime+';base64,'+data)
 clips=json.loads((root/'assets/audio/clips.json').read_text())
@@ -12,8 +12,9 @@ for key,clip in clips.items():
 page=page.replace('/* VOICE_SOURCE */',(src/'voice.js').read_text()).replace('/* ENGINE_SOURCE */',(src/'engine.js').read_text()).replace('/* VOICE_CLIPS */{}',json.dumps(clips,ensure_ascii=False,separators=(',',':')))
 (root/'play').mkdir(exist_ok=True)
 (root/'play/index.html').write_text(page)
+(root/'index.html').write_text(page)
 (root/'play/favicon.svg').write_text((root/'assets/favicon.svg').read_text())
 (root/'favicon.svg').write_text((root/'assets/favicon.svg').read_text())
-print('Built play/index.html')
+print('Built index.html and play/index.html')
 if '--game-only' not in sys.argv:
  runpy.run_path(str(src/'site/build.py'),init_globals={'ROOT':root})
